@@ -1,7 +1,8 @@
 import React from 'react'
-import {DataTable} from "./MyTable/DataTable";
+import {DataTable} from "./DataTable";
+import 'bulma/css/bulma.min.css';
 
-const MyTable = () => {
+export const MyTable = () => {
     const colDefs = [
         {
             field: "id",
@@ -41,7 +42,7 @@ const MyTable = () => {
     ]
 
     return <div>
-        <DataTable colDefs={colDefs} data={window.userData} />
+        <DataTable colDefs={colDefs} data={[]} />
     </div>;
 };
 
