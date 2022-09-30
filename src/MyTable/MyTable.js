@@ -2,6 +2,28 @@ import React from 'react'
 import {DataTable} from "./DataTable";
 import 'bulma/css/bulma.min.css';
 
+const data = [
+    {
+        id: 1,
+        firstName: "John",
+        lastName: "Doe",
+        company: "DataPro",
+        jobTitle: "CEO",
+        state: "TX",
+        isSiteAdmin: true,
+        dateJoined: "04/20/1999"
+    },
+    {
+        id: 1,
+        firstName: "Adam",
+        lastName: "Zeus",
+        company: "Instant",
+        jobTitle: "Manager",
+        state: "CA",
+        isSiteAdmin: false,
+        dateJoined: "02/12/1993"
+    }
+]
 export const MyTable = () => {
     const colDefs = [
         {
@@ -42,7 +64,7 @@ export const MyTable = () => {
     ]
 
     return <div>
-        <DataTable colDefs={colDefs} data={[]} />
+        <DataTable colDefs={colDefs} data={data} />
     </div>;
 };
 
