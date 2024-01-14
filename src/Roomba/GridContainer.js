@@ -5,9 +5,9 @@ const isValidCell = (x, y, size) => {
     return (x < size && x > -1) && (y < size && y > -1)
 }
 
-const positions = ["down", "left", "top", "right"]
+const positions = ["↓", "←", "↑", "→"]
 
-export const GridContainer = ({size = 10}) => {
+export const GridContainer = ({size = 6}) => {
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
     const [direction, setDirection] = useState(0);
