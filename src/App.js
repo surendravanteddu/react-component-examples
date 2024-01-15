@@ -1,16 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {MyTable} from "./MyTable/MyTable";
 import './App.css';
 import {InputWithToast} from "./InputWithToast/InputWithToast";
-
 import {GridContainer} from "./Roomba/GridContainer";
+import {ContactsTable} from "./MyTable/ContactsTable";
 
 function App() {
- return (
+    return (
      <>
-     <MyTable />
-      <GridContainer/>
-     <InputWithToast></InputWithToast>
+         <MyTable />
+         <GridContainer/>
+         <ContactsTable />
+         <InputWithToast></InputWithToast>
      </>
  )
 }

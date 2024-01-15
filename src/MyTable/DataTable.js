@@ -1,4 +1,4 @@
-import React, {useState , useMemo} from 'react'
+import React, {useState, useMemo, useEffect} from 'react'
 import {sortData, formatDate} from './utils'
 import {TableHeader} from './TableHeader'
 
@@ -6,12 +6,28 @@ import {TableHeader} from './TableHeader'
  * colDefs: Array of column definitions.
  * data: data to display in the table.
  */
-export const DataTable = ({colDefs, data = []}) => {
-    const [sortBy, setSortBy] = useState("firstName");
-    const [sortOrder, setSortOrder] = useState("asc");
+export const DataTable = ({colDefs, data = [] }) => {
+    const [sortBy, setSortBy] = useState("");
+    const [sortOrder, setSortOrder] = useState("");
+
+    useEffect(() => {
+        const column = colDefs.find(col => !!col.sort)
+        if (column) {
+            setSortBy(column.field)
+            setSortOrder(column.sort)
+        }
+    }, [])
 
     const sortedData = useMemo(() => {
-        return sortData(data, sortBy, sortOrder, ["firstName", "lastName"],colDefs)
+        /**
+         * default fields can act as secondary sort on fields in that array in that particular order
+         * currently not being used
+         */
+        if (sortBy && sortOrder ) {
+            return sortData(data, sortBy, sortOrder, [], colDefs)
+        } else {
+            return  data
+        }
     }, [data, sortBy, sortOrder, colDefs])
 
     const handleHeaderClick = (field) => {
